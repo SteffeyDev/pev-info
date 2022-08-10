@@ -1,0 +1,11 @@
+name: Deploy to Back4App
+on: [push]
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy B4App
+      uses: omurilo/action-back4app@v3.1
+      with:
+        project: 'pev-info'
+        accountKey: ${{ secrets.B4A_ACCOUNT_KEY }}

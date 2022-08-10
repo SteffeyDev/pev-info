@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "pev-info"
+    },
+    "pev-info": {
+      "applicationId": "HyPpnJZiDzbYUTpIGG79IwfogW9yuGXHccDuIYeQ"
+    }
+  }
+}
