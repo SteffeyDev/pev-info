@@ -4,8 +4,8 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy B4App
-      uses: omurilo/action-back4app@v3.1
+    - name: back4app Deploy Action
+      uses: heinrichcoetzee/back4app-deploy-action@v4
       with:
         project: 'pev-info'
         accountKey: ${{ secrets.B4A_ACCOUNT_KEY }}
