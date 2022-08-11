@@ -1,0 +1,14 @@
+{
+  "name": "pev-info-cloud",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "https://github.com/SteffeyDev/pev-info",
+  "author": "Peter Steffey",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "jsdom": "^20.0.0",
+    "reddit": "^1.2.1"
+  }
+}
