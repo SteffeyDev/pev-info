@@ -1,13 +1,31 @@
-const searchSources = require("./search");
+const providers = require("./providers");
 
 // source: string (e.g. reddit, forum)
 // id: string
 Parse.Cloud.define("search", async (request) => {
-  const searchFunc = searchSources[request.params.source];
-  const query = Parse.Query("Vehicle");
-  const vehicle = query.equalTo("id", request.params.id).first();
-  if (vehicle && searchFunc) {
-    return await searchFunc(`${vehicle.get("make")} ${vehicle.get("model")}`);
+  const { provider, id } = request.params;
+
+  const query = new Parse.Query("Vehicle");
+  const vehicle = await query.get(id);
+  if (!vehicle) throw new Error("Vehicle does not exist")
+
+  const searchFunc = providers.search[provider];
+  if (!searchFunc) throw new Error("Provider not valid")
+
+  return await searchFunc(`${vehicle.get("make")} ${vehicle.get("model")}`);
+}, {
+  requireUser: false,
+  requireMaster: false,
+  fields: {
+    provider: {
+      required: true,
+      type: String,
+      options: Object.keys(providers.search)
+    },
+    id: {
+      required: true,
+      type: String
+    }
   }
 });
 
