@@ -29,6 +29,29 @@ Parse.Cloud.define("search", async (request) => {
   }
 });
 
+Parse.Cloud.define("getModelDetails", (request) => {
+  const { make, model, provider } = request.params;
+  return providers.info[provider].getModelDetails({ make, model });
+}, {
+  requireUser: false,
+  requireMaster: false,
+  fields: {
+    provider: {
+      required: true,
+      type: String,
+      options: Object.keys(providers.info)
+    },
+    make: {
+      required: true,
+      type: String
+    },
+    model: {
+      required: true,
+      type: String
+    }
+  }
+})
+
 // When insert row, automatically run search to fill in data
 Parse.Cloud.afterSave("Vehicle", async (request) => {
   const vehicle = request.object;

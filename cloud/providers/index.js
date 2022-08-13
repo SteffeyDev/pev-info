@@ -4,7 +4,7 @@ module.exports = {
      * types: ('manufacturer' | 'retailer')[] sometimes manufacturer also retails
      * name: name of the provider
      * getModels: a function that returns a list of models, each with `make`, `model`, and `link`
-     * getModelDetails: a function that takes the make and model in an object and returns an information object:
+     * getModelDetails: a function that takes the object returned from getModels and returns an additional information:
      * {
      *   specs: string[] | Record<string, string> that contains the raw details from the site
      *   images: string[] links to all the images from the details page
@@ -16,6 +16,7 @@ module.exports = {
     info: {
         inmotionGlobal: require('./inmotionGlobal'),
         inmotionUsa: require('./inmotionUsa'),
+        ewheels: require('./ewheels')
     },
 
     /*

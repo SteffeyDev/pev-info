@@ -16,8 +16,7 @@ module.exports = {
         .getAttribute("href")}`,
     }));
   },
-  getModelDetails: async ({ make, model }) => {
-    if (make !== "INMOTION") return null;
+  getModelDetails: async ({ model }) => {
     const listDocument = await getDOMFromSite(
       "https://www.inmotionworld.com/electric-unicycle"
     );
