@@ -4,7 +4,7 @@ module.exports = {
   name: "INMOTION Global",
   types: ["manufacturer"],
   getModels: async () => {
-    const document = await getDOMFromSite(
+    const { document } = await getDOMFromSite(
       "https://www.inmotionworld.com/electric-unicycle"
     );
     const matches = Array.from(document.querySelectorAll(".product-item"));
@@ -17,7 +17,7 @@ module.exports = {
     }));
   },
   getModelDetails: async ({ model }) => {
-    const listDocument = await getDOMFromSite(
+    const { document: listDocument } = await getDOMFromSite(
       "https://www.inmotionworld.com/electric-unicycle"
     );
     const matches = Array.from(listDocument.querySelectorAll(".product-item"));
@@ -26,7 +26,7 @@ module.exports = {
         const link = `https://www.inmotionworld.com${element
             .querySelector(".link")
             .getAttribute("href")}`;
-        const detailDocument = await getDOMFromSite(link);
+        const { document: detailDocument } = await getDOMFromSite(link);
         return {
           link,
           specs: element

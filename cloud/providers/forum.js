@@ -4,7 +4,7 @@ module.exports = async (term) => {
   const url = `https://forum.electricunicycle.org/search/?q=${encodeURIComponent(
     term
   )}&quick=1`;
-  const document = await getDOMFromSite(url);
+  const { document } = await getDOMFromSite(url);
   const matches = Array.from(document.querySelectorAll(".ipsStreamItem"));
   return matches.map((element) => ({
     title: element.querySelector(".ipsStreamItem_title").textContent.trim(),

@@ -4,7 +4,7 @@ module.exports = {
   name: "eWheels",
   type: ["retailer"],
   getModels: async () => {
-    const document = await getDOMFromSite("https://www.ewheels.com/shop/");
+    const { document } = await getDOMFromSite("https://www.ewheels.com/shop/");
     const matches = Array.from(document.querySelectorAll(".product"));
     return matches.map((element) => {
       const titleElement = element.querySelector(".product-title");
@@ -27,7 +27,7 @@ module.exports = {
     });
   },
   getModelDetails: async ({ link }) => {
-    const document = await getDOMFromSite(link);
+    const { document } = await getDOMFromSite(link);
     return {
       specs: {
         ...Array.from(
